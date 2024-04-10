@@ -13,5 +13,5 @@ password VARCHAR(200) NOT NULL,
 mail VARCHAR(200) NOT NULL,
 corn INT DEFAULT 0 NOT NULL,
 id_roles INT,
-FOREIGN KEY (id_roles) REFERENCES roles(id),
+FOREIGN KEY (id_roles) REFERENCES roles(id)
 );
