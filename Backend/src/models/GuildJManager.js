@@ -1,16 +1,16 @@
 const AbstractManager = require("./AbstractManager");
 
-class RoleManager extends AbstractManager {
+class GuildJManager extends AbstractManager {
   constructor() {
-    super({ table: "roles" });
+    super({ table: "guilds_j" });
   }
 
   // The C of CRUD - Create operation
-  async create(role) {
-    const { rolename } = role;
+  async create(guildJ) {
+    const { name, description, id_quest } = guildJ;
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (rolename) VALUES (?)`,
-      [rolename]
+      `INSERT INTO ${this.table} (name, description, id_quest) VALUES (?, ?, ?)`,
+      [name, description, id_quest]
     );
     return result.insertId;
   }
@@ -49,8 +49,7 @@ class RoleManager extends AbstractManager {
 
   // The U of CRUD - Update operation
   async edit(id, updatedFields) {
-    const allowedFields = ["rolename"];
-
+    const allowedFields = ["name", "description", "id_quest"];
     const fieldsToUpdate = Object.keys(updatedFields).filter((field) =>
       allowedFields.includes(field)
     );
@@ -61,12 +60,13 @@ class RoleManager extends AbstractManager {
       return 0;
     }
 
-    const [result] = await this.database.query(
-      `UPDATE ${this.table} SET ${fieldsToUpdate
-        .map((field) => `${field} = ?`)
-        .join(", ")} WHERE id = ?`,
-      [...updateValues, id]
-    );
+    const updateQuery = `UPDATE ${this.table} SET ${fieldsToUpdate
+      .map((field) => `${field} = ?`)
+      .join(", ")} WHERE id = ?`;
+
+    updateValues.push(id);
+
+    const [result] = await this.database.query(updateQuery, updateValues);
 
     return result.affectedRows;
   }
@@ -77,4 +77,4 @@ class RoleManager extends AbstractManager {
   }
 }
 
-module.exports = RoleManager;
+module.exports = GuildJManager;

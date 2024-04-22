@@ -5,8 +5,8 @@ const tables = require("../tables");
 // The B of BREAD - Browse (Read all) - GET
 const browse = async (req, res, next) => {
   try {
-    const roles = await tables.roles.readAll();
-    res.json(roles);
+    const rules = await tables.rules.readAll();
+    res.json(rules);
   } catch (err) {
     next(err);
   }
@@ -18,12 +18,12 @@ const read = async (req, res, next) => {
     const { id } = req.params;
     const { field } = req.query;
 
-    const role = await tables.roles.read(id);
+    const rule = await tables.rules.read(id);
 
-    if (field && role && Array.isArray(role[field])) {
-      res.json({ [field]: role[field] });
-    } else if (role) {
-      res.json(role);
+    if (field && rule && Array.isArray(rule[field])) {
+      res.json({ [field]: rule[field] });
+    } else if (rule) {
+      res.json(rule);
     } else {
       res.sendStatus(404);
     }
@@ -34,58 +34,58 @@ const read = async (req, res, next) => {
 
 // The E of BREAD - Edit (Update) operation
 const edit = async (req, res) => {
-  const roleId = req.params.id;
+  const ruleId = req.params.id;
 
   try {
     if (!req.body) {
       return res.status(400).json({ message: "Empty body" });
     }
 
-    const { rolename } = req.body;
+    const { description } = req.body;
 
-    const role = await tables.roles.read(roleId);
+    const rule = await tables.rules.read(ruleId);
 
-    if (!role) {
-      return res.status(404).json({ message: "role not found" });
+    if (!rule) {
+      return res.status(404).json({ message: "rule not found" });
     }
 
     const updatedFields = {};
 
-    if (rolename !== undefined) {
-      updatedFields.rolename = rolename;
+    if (description !== undefined) {
+      updatedFields.description = description;
     }
 
-    const affectedRows = await tables.roles.edit(roleId, updatedFields);
+    const affectedRows = await tables.rules.edit(ruleId, updatedFields);
 
     if (affectedRows === 0) {
       return res.status(500).json({ message: "Update fail" });
     }
 
-    const editedrole = await tables.roles.read(roleId);
+    const editedrule = await tables.rules.read(ruleId);
     return res.json({
       message: "Success Update",
-      role: editedrole,
+      rule: editedrule,
     });
   } catch (error) {
-    console.error("Error on role update", error);
-    return res.status(500).json({ message: "Error on role update" });
+    console.error("Error on rule update", error);
+    return res.status(500).json({ message: "Error on rule update" });
   }
 };
 
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
   try {
-    const { rolename } = req.body;
+    const { description } = req.body;
 
-    const role = {
-      rolename,
+    const rule = {
+      description,
     };
 
-    const insertId = await tables.roles.create(role);
+    const insertId = await tables.rules.create(rule);
 
     res.status(201).json({ message: "Success", id: insertId });
   } catch (err) {
-    console.error("Error on role creation", err);
+    console.error("Error on rule creation", err);
     next(err);
   }
 };
@@ -93,7 +93,7 @@ const add = async (req, res, next) => {
 // The D of BREAD - Delete operation
 const destroy = async (req, res, next) => {
   try {
-    await tables.roles.delete(req.params.id);
+    await tables.rules.delete(req.params.id);
 
     res.sendStatus(204);
   } catch (err) {

@@ -1,16 +1,16 @@
 const AbstractManager = require("./AbstractManager");
 
-class RoleManager extends AbstractManager {
+class RuleManager extends AbstractManager {
   constructor() {
-    super({ table: "roles" });
+    super({ table: "rules" });
   }
 
   // The C of CRUD - Create operation
-  async create(role) {
-    const { rolename } = role;
+  async create(rule) {
+    const { description } = rule;
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (rolename) VALUES (?)`,
-      [rolename]
+      `INSERT INTO ${this.table} (description) VALUES (?)`,
+      [description]
     );
     return result.insertId;
   }
@@ -49,7 +49,7 @@ class RoleManager extends AbstractManager {
 
   // The U of CRUD - Update operation
   async edit(id, updatedFields) {
-    const allowedFields = ["rolename"];
+    const allowedFields = ["description"];
 
     const fieldsToUpdate = Object.keys(updatedFields).filter((field) =>
       allowedFields.includes(field)
@@ -77,4 +77,4 @@ class RoleManager extends AbstractManager {
   }
 }
 
-module.exports = RoleManager;
+module.exports = RuleManager;
