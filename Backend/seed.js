@@ -30,7 +30,7 @@ const insertRules = async () => {
   ('Les autres tu respecteras'),
   ('Les règles tu suivras')
   `);
-}
+};
 
 const insertGuildsJ = async () => {
   return database.query(`
@@ -39,7 +39,7 @@ const insertGuildsJ = async () => {
   ('Les mages', 'Guilde des mages', NULL),
   ('Les guerriers', 'Guilde des guerriers', NULL)
   `);
-}
+};
 
 const insertQuests = async () => {
   return database.query(`
@@ -48,7 +48,7 @@ const insertQuests = async () => {
   ('Quête 2', 'Description de la quête 2', 200, NULL),
   ('Quête 3', 'Description de la quête 3', 300, NULL)
   `);
-}
+};
 
 const insertGuildsPNJ = async () => {
   return database.query(`
@@ -57,7 +57,7 @@ const insertGuildsPNJ = async () => {
   ('PNJ 2', 'Description PNJ 2', 'Logo PNJ 2'),
   ('PNJ 3', 'Description PNJ 3', 'Logo PNJ 3')
   `);
-}
+};
 
 const seed = async () => {
   try {

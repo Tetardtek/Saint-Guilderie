@@ -11,6 +11,8 @@ const userControllers = require("./controllers/userControllers");
 const roleControllers = require("./controllers/roleControllers");
 const ruleControllers = require("./controllers/ruleControllers");
 const guildjControllers = require("./controllers/guildjControllers");
+const guildpnjControllers = require("./controllers/guildpnjControllers");
+const questControllers = require("./controllers/questControllers");
 const verifyToken = require("./middlewares/verifyToken");
 
 // User management
@@ -42,6 +44,20 @@ router.get("/guilds_j/:id", guildjControllers.read);
 router.put("/guilds_j/:id", guildjControllers.edit);
 router.post("/guilds_j", guildjControllers.add);
 router.delete("/guilds_j/:id", guildjControllers.destroy);
+
+// Guild PNJ management
+router.get("/guilds_pnj", guildpnjControllers.browse);
+router.get("/guilds_pnj/:id", guildpnjControllers.read);
+router.put("/guilds_pnj/:id", guildpnjControllers.edit);
+router.post("/guilds_pnj", guildpnjControllers.add);
+router.delete("/guilds_pnj/:id", guildpnjControllers.destroy);
+
+// Quest management
+router.get("/quests", questControllers.browse);
+router.get("/quests/:id", questControllers.read);
+router.put("/quests/:id", questControllers.edit);
+router.post("/quests", questControllers.add);
+router.delete("/quests/:id", questControllers.destroy);
 
 /* ************************************************************************* */
 

@@ -1,16 +1,16 @@
 const AbstractManager = require("./AbstractManager");
 
-class GuildJManager extends AbstractManager {
+class GuildPNJManager extends AbstractManager {
   constructor() {
-    super({ table: "guilds_j" });
+    super({ table: "guilds_pnj" });
   }
 
   // The C of CRUD - Create operation
-  async create(guildJ) {
-    const { name, description, id_quest } = guildJ;
+  async create(guildPNJ) {
+    const { name, description, logo } = guildPNJ;
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (name, description, id_quest) VALUES (?, ?, ?)`,
-      [name, description, id_quest]
+      `INSERT INTO ${this.table} (name, description, logo) VALUES (?, ?, ?)`,
+      [name, description, logo]
     );
     return result.insertId;
   }
@@ -49,7 +49,7 @@ class GuildJManager extends AbstractManager {
 
   // The U of CRUD - Update operation
   async edit(id, updatedFields) {
-    const allowedFields = ["name", "description", "id_quest"];
+    const allowedFields = ["name", "description", "logo"];
     const fieldsToUpdate = Object.keys(updatedFields).filter((field) =>
       allowedFields.includes(field)
     );
@@ -77,4 +77,4 @@ class GuildJManager extends AbstractManager {
   }
 }
 
-module.exports = GuildJManager;
+module.exports = GuildPNJManager;
