@@ -10,6 +10,7 @@ const router = express.Router();
 const userControllers = require("./controllers/userControllers");
 const roleControllers = require("./controllers/roleControllers");
 const ruleControllers = require("./controllers/ruleControllers");
+const guildjControllers = require("./controllers/guildjControllers");
 const verifyToken = require("./middlewares/verifyToken");
 
 // User management
@@ -34,6 +35,13 @@ router.get("/rules/:id", ruleControllers.read);
 router.put("/rules/:id", ruleControllers.edit);
 router.post("/rules", ruleControllers.add);
 router.delete("/rules/:id", ruleControllers.destroy);
+
+// Guild J management
+router.get("/guilds_j", guildjControllers.browse);
+router.get("/guilds_j/:id", guildjControllers.read);
+router.put("/guilds_j/:id", guildjControllers.edit);
+router.post("/guilds_j", guildjControllers.add);
+router.delete("/guilds_j/:id", guildjControllers.destroy);
 
 /* ************************************************************************* */
 

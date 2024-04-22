@@ -6,11 +6,13 @@
 const RoleManager = require("./models/RoleManager");
 const UserManager = require("./models/UserManager");
 const RuleManager = require("./models/RuleManager");
+const GuildJManager = require("./models/GuildJManager");
 
 const managers = [
   RoleManager,
   UserManager,
   RuleManager,
+  GuildJManager,
   // Add other managers here
 ];
 
