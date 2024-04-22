@@ -41,7 +41,7 @@ const edit = async (req, res) => {
       return res.status(400).json({ message: "Empty body" });
     }
 
-    const { ruledescription } = req.body;
+    const { description } = req.body;
 
     const rule = await tables.rules.read(ruleId);
 

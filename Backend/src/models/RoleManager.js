@@ -9,7 +9,7 @@ class RoleManager extends AbstractManager {
   async create(role) {
     const { rolename } = role;
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (name) VALUES (?)`,
+      `INSERT INTO ${this.table} (rolename) VALUES (?)`,
       [rolename]
     );
     return result.insertId;
@@ -49,7 +49,7 @@ class RoleManager extends AbstractManager {
 
   // The U of CRUD - Update operation
   async edit(id, updatedFields) {
-    const allowedFields = ["name"];
+    const allowedFields = ["rolename"];
 
     const fieldsToUpdate = Object.keys(updatedFields).filter((field) =>
       allowedFields.includes(field)

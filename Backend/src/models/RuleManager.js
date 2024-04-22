@@ -7,10 +7,10 @@ class RuleManager extends AbstractManager {
 
   // The C of CRUD - Create operation
   async create(rule) {
-    const { ruledescription } = rule;
+    const { description } = rule;
     const [result] = await this.database.query(
       `INSERT INTO ${this.table} (description) VALUES (?)`,
-      [ruledescription]
+      [description]
     );
     return result.insertId;
   }
