@@ -9,6 +9,7 @@ const router = express.Router();
 // Import Controllers
 const userControllers = require("./controllers/userControllers");
 const roleControllers = require("./controllers/roleControllers");
+const ruleControllers = require("./controllers/ruleControllers");
 const verifyToken = require("./middlewares/verifyToken");
 
 // User management
@@ -26,6 +27,13 @@ router.get("/roles/:id", roleControllers.read);
 router.put("/roles/:id", roleControllers.edit);
 router.post("/roles", roleControllers.add);
 router.delete("/roles/:id", roleControllers.destroy);
+
+// Rule management
+router.get("/rules", ruleControllers.browse);
+router.get("/rules/:id", ruleControllers.read);
+router.put("/rules/:id", ruleControllers.edit);
+router.post("/rules", ruleControllers.add);
+router.delete("/rules/:id", ruleControllers.destroy);
 
 /* ************************************************************************* */
 

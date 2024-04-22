@@ -23,12 +23,22 @@ const insertUsers = async () => {
   `);
 };
 
+const insertRules = async () => {
+  return database.query(`
+  INSERT INTO rules (description) VALUES
+  ('Gentil tu seras'),
+  ('Les autres tu respecteras'),
+  ('Les règles tu suivras')
+  `);
+}
+
 const seed = async () => {
   try {
     await database.query("START TRANSACTION");
 
     await insertRoles();
     await insertUsers();
+    await insertRules();
 
     await database.query("COMMIT");
 
