@@ -1,10 +1,11 @@
+import Connexion from './pages/Login.jsx';
 import './styles/App.css'
 
 function App() {
 
   return (
     <>
-      Here is front page
+  Yo les pti guildeux
     </>
   )
 }

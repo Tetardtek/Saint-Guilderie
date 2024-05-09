@@ -9,11 +9,11 @@ class UserManager extends AbstractManager {
   async create(user) {
     const { pseudo, password, mail, corn } = user;
 
-    const rolesId = 1;
+    const id_roles = 1;
 
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (pseudo, password, mail, corn, id_roles) VALUES (?, ?, ?, 0, ?)`,
-      [pseudo, password, mail, corn, id_roles]
+      `INSERT INTO ${this.table} (pseudo, password, mail, corn, id_roles) VALUES (?, ?, ?, 0, 1)`,
+      [pseudo, password, mail, corn, id_roles ]
     );
 
     return result.insertId;
