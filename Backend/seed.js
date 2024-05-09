@@ -43,10 +43,10 @@ const insertGuildsJ = async () => {
 
 const insertQuests = async () => {
   return database.query(`
-  INSERT INTO quests (title, description, reward, id_guilds_pnj) VALUES
-  ('Quête 1', 'Description de la quête 1', 100, NULL),
-  ('Quête 2', 'Description de la quête 2', 200, NULL),
-  ('Quête 3', 'Description de la quête 3', 300, NULL)
+  INSERT INTO quests (title, description_j, description_pnj, reward, id_guilds_pnj) VALUES
+  ('Quête 1', 'Description de la quête 1', 'Info de la quête 1 pnj', 1, NULL),
+  ('Quête 2', 'Description de la quête 2', 'Info de la quête 2 pnj', 2, NULL),
+  ('Quête 3', 'Description de la quête 3', 'Info de la quête 3 pnj', 3, NULL)
   `);
 };
 

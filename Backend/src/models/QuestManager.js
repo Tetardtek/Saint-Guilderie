@@ -7,10 +7,10 @@ class QuestManager extends AbstractManager {
 
   // The C of CRUD - Create operation
   async create(quest) {
-    const { title, description, reward, id_guilds_pnj } = quest;
+    const { title, description_j, description_pnj, reward, id_guilds_pnj } = quest;
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (title, description, reward, id_guilds_pnj) VALUES (?, ?, ?, ?)`,
-      [title, description, reward, id_guilds_pnj]
+      `INSERT INTO ${this.table} (title, description_j, description_pnj, reward, id_guilds_pnj) VALUES (?, ?, ?, ?, ?)`,
+      [title, description_j, description_pnj, reward, id_guilds_pnj]
     );
     return result.insertId;
   }
@@ -49,7 +49,7 @@ class QuestManager extends AbstractManager {
 
   // The U of CRUD - Update operation
   async edit(id, updatedFields) {
-    const allowedFields = ["title", "description", "reward", "id_guilds_pnj"];
+    const allowedFields = ["title", "description_j", "description_pnj", "reward", "id_guilds_pnj"];
     const fieldsToUpdate = Object.keys(updatedFields).filter((field) =>
       allowedFields.includes(field)
     );

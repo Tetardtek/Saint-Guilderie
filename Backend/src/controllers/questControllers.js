@@ -41,7 +41,7 @@ const edit = async (req, res) => {
       return res.status(400).json({ message: "Empty body" });
     }
 
-    const { title, description, reward, id_guilds_pnj } = req.body;
+    const { title, description_j, description_pnj, reward, id_guilds_pnj } = req.body;
 
     const quest = await tables.quests.read(questId);
 
@@ -54,8 +54,11 @@ const edit = async (req, res) => {
     if (title !== undefined) {
       updatedFields.title = title;
     }
-    if (description !== undefined) {
-      updatedFields.description = description;
+    if (description_j !== undefined) {
+      updatedFields.description_j = description_j;
+    }
+    if (description_pnj !== undefined) {
+      updatedFields.description_pnj = description_pnj;
     }
     if (reward !== undefined) {
       updatedFields.reward = reward;
@@ -84,11 +87,12 @@ const edit = async (req, res) => {
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
   try {
-    const { title, description, reward, id_guilds_pnj } = req.body;
+    const { title, description_j, description_pnj, reward, id_guilds_pnj } = req.body;
 
     const quest = {
       title,
-      description,
+      description_j,
+      description_pnj,
       reward,
       id_guilds_pnj,
     };

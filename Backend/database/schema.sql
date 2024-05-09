@@ -21,7 +21,8 @@ logo VARCHAR(200) NOT NULL
 CREATE TABLE quests (
 id INT AUTO_INCREMENT PRIMARY KEY,
 title VARCHAR(255) NOT NULL,
-description VARCHAR(255) NOT NULL,
+description_j VARCHAR(255) NOT NULL,
+description_pnj VARCHAR(255) NOT NULL,
 reward INT DEFAULT 0 NOT NULL,
 id_guilds_pnj INT DEFAULT NULL,
 FOREIGN KEY (id_guilds_pnj) REFERENCES guilds_pnj(id)
