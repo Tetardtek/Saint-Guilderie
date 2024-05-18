@@ -35,9 +35,16 @@ const insertRules = async () => {
 const insertGuildsJ = async () => {
   return database.query(`
   INSERT INTO guilds_j (name, description, id_quest) VALUES
-  ('Les aventuriers', 'Guilde des aventuriers', NULL),
-  ('Les mages', 'Guilde des mages', NULL),
-  ('Les guerriers', 'Guilde des guerriers', NULL)
+  ('Artiste', 'Guilde des artistes', 'NULL'),
+  ('Chevalier', 'Guilde des chevaliers', 'NULL'),
+  ('Elfes', 'Guilde des elfes', 'NULL'),
+  ('Erudit', 'Guilde des érudits', 'NULL'),
+  ('Forgeron', 'Guilde des forgerons', 'NULL'),
+  ('Goblins', 'Guilde des goblins', 'NULL'),
+  ('Marchand', 'Guilde des marchands', 'NULL'),
+  ('Paladin', 'Guilde des paladins', 'NULL'),
+  ('Parieur', 'Guilde des parieurs', 'NULL'),
+  ('Sorciere', 'Guilde des sorcières', 'NULL')
   `);
 };
 
@@ -53,9 +60,16 @@ const insertQuests = async () => {
 const insertGuildsPNJ = async () => {
   return database.query(`
   INSERT INTO guilds_pnj (name, description, logo) VALUES
-  ('PNJ 1', 'Description PNJ 1', 'Logo PNJ 1'),
-  ('PNJ 2', 'Description PNJ 2', 'Logo PNJ 2'),
-  ('PNJ 3', 'Description PNJ 3', 'Logo PNJ 3')
+  ('Artiste', 'Guilde des artistes', 'public/logoguild/Artiste.png'),
+  ('Chevalier', 'Guilde des chevaliers', 'public/logoguild/Chevalier.png'),
+  ('Elfes', 'Guilde des elfes', 'public/logoguild/Elfes.png'),
+  ('Erudit', 'Guilde des érudits', 'public/logoguild/Erudit.png'),
+  ('Forgeron', 'Guilde des forgerons', 'public/logoguild/Forgeron.png'),
+  ('Goblins', 'Guilde des goblins', 'public/logoguild/Goblins.png'),
+  ('Marchand', 'Guilde des marchands', 'public/logoguild/Marchand.png'),
+  ('Paladin', 'Guilde des paladins', 'public/logoguild/Paladin.png'),
+  ('Parieur', 'Guilde des parieurs', 'public/logoguild/Parieur.png'),
+  ('Sorciere', 'Guilde des sorcières', 'public/logoguild/Sorciere.png')
   `);
 };
 

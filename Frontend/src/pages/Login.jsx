@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import useNavigate from "react-router-dom";
 
 export default function Connexion() {
   const [credentials, setCredentials] = useState({ mail: "", password: "" });
@@ -7,6 +8,7 @@ export default function Connexion() {
   const { login } = useAuth();
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [loginError, setLoginError] = useState(null);
+const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
